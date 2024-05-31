@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Asem.bq</title>
+    <link
+            rel="shortcut icon"
+            href="{% static 'icon/fav.ico' %}"
+            type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/contactme.css' %}">
+</head>
+<body>
+<!-- header -->
+
+<header class="header">
+    <img src="{{ header.img.url }}" alt="Asem"/>
+    <div class="titel">
+        <h1>{{ header.name }}</h1>
+        <h2 class="position">
+            <i class="fa-solid fa-angle-right"></i> {{ header.position }}
+        </h2>
+        <a href="{{ socialMedia.github }}" target="_blank" class="button"
+        ><i class="fa-brands fa-github"></i> My Github Profile</a
+        >
+    </div>
+    <a href="{% url 'homeFa:home' %}" class="lang"><i class="fa-solid fa-globe"></i> Fa</a>
+</header>
+
+<div class="countainer">
+    <!-- Nav bar -->
+
+    <nav>
+        <ul>
+            <li class="active AboutMe">
+                <span class="marker"><i class="fa-solid fa-angle-right"></i></span>
+                About Me
+            </li>
+            <li class="MySkilles">
+                <span class="marker"><i class="fa-solid fa-angle-right"></i></span>
+                My Skills
+            </li>
+            <li class="MyProject">
+                <span class="marker"><i class="fa-solid fa-angle-right"></i></span>
+                My Project
+            </li>
+            <li id="ContactMe" class="">
+                <span class="marker"><i class="fa-solid fa-angle-right"></i></span>
+                Contact Me
+            </li>
+        </ul>
+    </nav>
+
+    <!-- section -->
+
+    <section class="sections">
+        <section class="active AboutMe">
+            <h4>About Me</h4>
+            <p>
+                {{ aboutMe.info }}
+            </p>
+
+            <div class="contact">
+                <div class="email">
+                    <h5>Email</h5>
+                    <p>{{ aboutMe.email }} <i class="fa-regular fa-clone"></i></p>
+                </div>
+                <div class="number">
+                    <h5>Phone</h5>
+                    <p>{{ aboutMe.phone }}<i class="fa-regular fa-clone"></i></p>
+                </div>
+            </div>
+
+            <h5>Social Media</h5>
+            <ul class="social">
+                <li>
+                    <a
+                            target="_blank"
+                            href="{{ socialMedia.linkedin }}"
+                    ><span class="linkedin"></span
+                    ></a>
+                </li>
+                <li>
+                    <a target="_blank" href="{{ socialMedia.github }}"
+                    ><span class="github"></span
+                    ></a>
+                </li>
+                <li>
+                    <a
+                            target="_blank"
+                            href="{{ socialMedia.twitter }}"
+                    ><span class="twitter"></span
+                    ></a>
+                </li>
+                <li>
+                    <a target="_blank" href="{{ socialMedia.telegram }}"
+                    ><span class="telegram"></span
+                    ></a>
+                </li>
+                <li>
+                    <a target="_blank" href="{{ socialMedia.whatsapp }}"
+                    ><span class="whatsup"></span
+                    ></a>
+                </li>
+                <li>
+                    <a target="_blank" href="{{ socialMedia.instagram }}"
+                    ><span class="instagram"></span
+                    ></a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- section -->
+        <section class="Tecnology">
+            <h4>Technology</h4>
+            <ul class="skilles">
+
+                {% for technology in technologys %}
+
+                    <li>
+              <span class="left"
+              ><img src="{{ technology.img.url }}" alt=""/> {{ technology.name }}</span
+              >
+                        <span class="right" style="text-align: center;"
+                        >{{ technology.level }}</span
+                        >
+                    </li>
+                {% endfor %}
+            </ul>
+            <h4>Tools</h4>
+            <ul class="skilles">
+                {% for tool in tools %}
+                    <li>
+              <span class="left"
+              ><img src="{{ tool.img.url }}" alt=""/> {{ tool.name }} </span
+              ><span class="right"
+                    >{{ tool.level }}</span
+                    >
+                    </li>
+                {% endfor %}
+            </ul>
+            <h4>Other Skills</h4>
+            <ul class="other_skilles">
+                {% for otherSkill in otherSkills %}
+                    <li> {{ otherSkill.tittle }}</li>
+                {% endfor %}
+
+            </ul>
+        </section>
+
+        <!-- section -->
+        <section id="MyProject" class="MyProject">
+            <h4>My Project</h4>
+            <div class="projects">
+                {% for project in projects %}
+                	<div class="project">
+                    <div class="top">
+                        <img src="{{ project.img.url }}" alt=""/>
+                        <h6 class="titel">{{ project.tittle }}</h6>
+                    </div>
+                    <div class="midel">
+                        <p>
+                            {{ project.description }}
+                        </p>
+                    </div>
+                    <div class="bottom">
+                        <div class="tech">
+                            tech used:
+                            <ul>
+                                {% for tech in project.tech.all %}
+                                	<li><img src="{{ tech.img.url }}" alt=""/></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="buttons">
+                            <a target="_blank" href="./franchis.html"
+                            ><i class="fa-solid fa-eye"></i>Demo</a
+                            >
+                            <a target="_blank" href="https://github.com/AsemBq/franchise"
+                            ><i class="fa-brands fa-github"></i>View Code</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="ContactMe">
+            <h4>Contact Me</h4>
+            <div class="container">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="input-group input-group-icon">
+                        <input name="fullName" type="text" placeholder="Full Name" maxlength="50">
+                        <div class="input-icon"><i class="fa-solid fa-user"></i></div>
+                    </div>
+                    <div class="input-group input-group-icon">
+                        <input name="email" type="email" placeholder="Email Address" maxlength="50">
+                        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                    </div>
+                    <div class="input-group input-group-icon">
+                        <textarea name="message" id="" rows="10" placeholder="Message..."></textarea>
+                        <div class="input-icon"><i class="fa-solid fa-comment"></i></div>
+                    </div>
+                    <input id="button" type="submit" value="Send">
+                </form>
+            </div>
+        </section>
+    </section>
+</div>
+<nav class="mobile-nav">
+    <ul>
+        <li id="About" class="active">
+            <i class="fa-regular fa-user"></i>About
+        </li>
+        <li id="Skilles"><i class="fa-solid fa-code"></i>Skills</li>
+        <li id="projects"><i class="fa-solid fa-laptop-code"></i>projects</li>
+        <li id="liContact"><i class="fa-solid fa-phone"></i>Contact</li>
+    </ul>
+</nav>
+
+<script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

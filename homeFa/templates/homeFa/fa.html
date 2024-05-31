@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asem.bq</title>
+    <link
+      rel="shortcut icon"
+      href="{% static 'icon/fav.ico' %}"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{% static 'css/fa.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/responsive-fa.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/contactme-fa.css' %}" />
+  </head>
+  <body>
+    <!-- header -->
+
+    <header class="header">
+      <div class="titel">
+        <h1>{{ header.name }}</h1>
+        <h2 class="position">
+          {{ header.position }}
+          <i class="fa-solid fa-angle-left"></i>
+        </h2>
+        <a href="{{ socialMedia.github }}" target="_blank" class="button"
+          ><i class="fa-brands fa-github"></i> گیت هاب من</a
+        >
+      </div>
+      <img src="{{ header.img.url }}" alt="Asem" />
+      <a href="{% url 'home:home' %}" class="lang"
+        ><i class="fa-solid fa-globe"></i> En</a
+      >
+    </header>
+
+    <div class="countainer">
+      <!-- section -->
+
+      <section class="sections">
+        <section class="AboutMe active">
+          <h4>درباره من</h4>
+          <p>
+               {{ aboutMe.info }}
+          </p>
+          <div class="contact">
+            <div class="email">
+              <h5>ایمیل</h5>
+              <p><i class="fa-regular fa-clone"> </i>{{ aboutMe.email }}</p>
+            </div>
+            <div class="number">
+              <h5>شماره تماس</h5>
+              <p><i class="fa-regular fa-clone"> </i>{{ aboutMe.phone }}</p>
+            </div>
+          </div>
+
+          <h5>شبکه های اجتماعی</h5>
+          <ul class="social">
+            <li>
+              <a
+                target="_blank"
+                href="{{ socialMedia.linkedin }}"
+                ><span class="linkedin"></span
+              ></a>
+            </li>
+            <li>
+              <a target="_blank" href="{{ socialMedia.github }}"
+                ><span class="github"></span
+              ></a>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="{{ socialMedia.twitter }}"
+                ><span class="twitter"></span
+              ></a>
+            </li>
+            <li>
+              <a target="_blank" href="{{ socialMedia.telegram }}"
+                ><span class="telegram"></span
+              ></a>
+            </li>
+            <li>
+              <a target="_blank" href="{{ socialMedia.whatsapp }}"
+                ><span class="whatsup"></span
+              ></a>
+            </li>
+            <li>
+              <a target="_blank" href="{{ socialMedia.instagram }}"
+                ><span class="instagram"></span
+              ></a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- section -->
+        <section class="Tecnology">
+          <h4>تکنولوژی</h4>
+          <ul class="skilles">
+            {% for technology in technologys %}
+                 <li>
+              <span class="left">{{ technology.level }}</span>
+              <span class="right"
+                >{{ technology.name }}<img src="{{ technology.img.url }}" alt=""
+              /></span>
+            </li>
+                {% endfor %}
+          </ul>
+          <h4>ابزارها</h4>
+          <ul class="skilles">
+             {% for tool in tools %}
+                     <li>
+              <span class="left">{{ tool.level }}</span>
+              <span class="right"
+                >{{ tool.name }}<img src="{{ tool.img.url }}" alt=""
+              /></span>
+            </li>
+                {% endfor %}
+          </ul>
+          <h4>مهارت‌های دیگر</h4>
+          <ul class="other_skilles">
+             {% for otherSkill in otherSkills %}
+                    <li> {{ otherSkill.tittle }}</li>
+                {% endfor %}
+          </ul>
+        </section>
+
+        <!-- section -->
+        <section id="MyProject" class="MyProject">
+          <h4>پروژهای من</h4>
+          <div class="projects">
+            {% for project in projects %}
+                	<div class="project">
+                    <div class="top">
+                        <img src="{{ project.img.url }}" alt=""/>
+                        <h6 class="titel">{{ project.tittle }}</h6>
+                    </div>
+                    <div class="midel">
+                        <p>
+                            {{ project.description }}
+                        </p>
+                    </div>
+                    <div class="bottom">
+                        <div class="tech">
+                            <ul>
+                                {% for tech in project.tech.all %}
+                                	<li><img src="{{ tech.img.url }}" alt=""/></li>
+                                {% endfor %}
+                            </ul>
+                            :تکنولوژی ها
+                        </div>
+                        <div class="buttons">
+                            <a target="_blank" href="./franchis.html"
+                            ><i class="fa-solid fa-eye"></i>دمو</a
+                            >
+                            <a target="_blank" href="https://github.com/AsemBq/franchise"
+                            ><i class="fa-brands fa-github"></i>دیدن کدها</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+          </div>
+        </section>
+
+        <section class="ContactMe">
+          <h4>ارتباط با من</h4>
+          <div class="container">
+            <form method="post" action="{% url 'homeFa:home' %}">
+                {% csrf_token %}
+              <div class="input-group input-group-icon">
+                <input  name="fullName" type="text" placeholder="نام"  maxlength="50" />
+                <div class="input-icon"><i class="fa-solid fa-user"></i></div>
+              </div>
+              <div class="input-group input-group-icon">
+                <input name="email"
+                  type="email"
+                  placeholder="ایمیل"
+                />
+                <div class="input-icon"><i class="fa fa-envelope"></i></div>
+              </div>
+              <div class="input-group input-group-icon">
+                <textarea
+                  name="message"
+                  id=""
+                  rows="10"
+                  placeholder="پیام..."
+                ></textarea>
+                <div class="input-icon">
+                  <i class="fa-solid fa-comment"></i>
+                </div>
+              </div>
+              <input id="button" type="submit" value="ارسال" />
+            </form>
+          </div>
+        </section>
+      </section>
+
+      <!-- Nav bar -->
+
+      <nav>
+        <ul>
+          <li class="active AboutMe">
+            درباره من
+            <span class="marker"><i class="fa-solid fa-angle-left"></i></span>
+          </li>
+          <li class="MySkilles">
+            مهارت های من
+            <span class="marker"><i class="fa-solid fa-angle-left"></i></span>
+          </li>
+          <li class="MyProject">
+            پروژه های من
+            <span class="marker"><i class="fa-solid fa-angle-left"></i></span>
+          </li>
+          <li id="ContactMe" class="">
+            ارتباط با من
+            <span class="marker"><i class="fa-solid fa-angle-left"></i></span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <nav class="mobile-nav">
+      <ul>
+        <li id="About" class="active">
+          <i class="fa-regular fa-user"></i>اطلاعات
+        </li>
+        <li id="Skilles"><i class="fa-solid fa-code"></i>مهارت‌ها</li>
+        <li id="projects"><i class="fa-solid fa-laptop-code"></i>پروژها</li>
+        <li id="liContact"><i class="fa-solid fa-phone"></i>ارتباط</li>
+      </ul>
+    </nav>
+
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
+</html>

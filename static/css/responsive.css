@@ -1,0 +1,167 @@
+@media only screen and (max-width: 992px) {
+  body,
+  h5 {
+    background-color: #fafafa;
+    font-size: 16px;
+  }
+  nav {
+    display: none;
+  }
+
+
+  .sections section{
+    display: none ;
+  }
+
+
+  nav.mobile-nav {
+    display: block;
+    background-color: #333533;
+    color: #fafafa;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .sections section{
+    margin-bottom: 40px;
+  }
+
+  .sections,
+  .sections section:last-child {
+    width: auto;
+    border: none;
+  }
+  .header,
+  .countainer {
+    padding: 0;
+  }
+
+  .countainer{
+    display: block;
+  }
+
+  .header {
+    height: auto;
+  }
+
+  .lang {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+    top: 75px;
+  }
+
+  .header .position i,
+  .header .position,
+  .header .button i,
+  .header .titel h1,
+  .button,
+  .button i {
+    color: #333533;
+  }
+  .header .titel h1 {
+    font-size: 36px;
+  }
+  .header .position {
+    font-size: 24px;
+    margin: 30px 0;
+  }
+  .titel .button {
+    border: 1px solid #333533;
+    width: 100%;
+    padding: 8px 0;
+    display: inline-block;
+  }
+  .header .titel {
+    background-color: #fafafa;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 150px;
+    padding: 120px 20px 60px;
+  }
+  .sections {
+    padding: 0 20px;
+  }
+  .sections section {
+    border-top: 1px solid #d9d9d9;
+    padding: 60px 0;
+  }
+  .sections section h4 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+  .contact {
+    flex-wrap: wrap;
+  }
+
+  .contact div {
+    width: 100%;
+  }
+
+  .skilles li span{
+    font-size: 16px;
+  }
+  .skilles li span.left {
+    width: 60%;}
+
+    .skilles li span.right{
+      width: 40%;
+    }
+
+  .skilles li img{
+    width: 36px;
+    height: 36px;
+  }
+
+  .sections #MyProject {
+    width: 100% ;
+  }
+
+
+  .project {
+    width: 100%;
+    margin-right: 0 !important;
+  }
+
+  .project .top img{
+    width: 100%;
+  }
+
+  
+
+
+  nav.mobile-nav ul{
+    display: flex;
+    justify-content: space-between;
+    
+
+  }
+
+  nav.mobile-nav ul li{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    flex: 1;
+  }
+  nav.mobile-nav ul li i{
+    margin-right: 12px;
+  }
+
+  nav.mobile-nav ul li.active{
+    color: #ffd100;
+    border-bottom:4px solid #ffd100 ;
+  }
+}
