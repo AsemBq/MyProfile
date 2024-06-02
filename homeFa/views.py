@@ -7,11 +7,13 @@ import telebot
 def home_fa(request):
     header = models.Header.objects.last()
     aboutMe = models.AboutMe.objects.last()
-    socialMedia = SocialMedia.objects.all()
+    socialMedia = SocialMedia.objects.last()
     technologys = models.Technology.objects.all()
     tools = models.Tools.objects.all()
     otherSkills = models.OtherSkills.objects.all()
     projects = models.Project.objects.all()
+    print(socialMedia)
+    print(socialMedia)
 
     if request.method == "POST":
         name = request.POST.get('fullName')
